@@ -12,9 +12,9 @@ namespace ChatDataManager.Controllers
 {
     public class UserController : ApiController
     {
-        public UserModel GetById()
+        public UserModel GetUserById()
         {
-            var userId = RequestContext.Principal.Identity.GetUserId();
+            string userId = RequestContext.Principal.Identity.GetUserId();
 
             UserData data = new UserData();
 

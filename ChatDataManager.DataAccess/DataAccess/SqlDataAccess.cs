@@ -14,7 +14,8 @@ namespace ChatDataManager.Library.DataAccess
     {
         public string GetConnectionString(string name)
         {
-            return ConfigurationManager.ConnectionStrings[name].ConnectionString;
+            string connectionString = ConfigurationManager.ConnectionStrings[name].ConnectionString;
+            return connectionString;
         }
 
         public List<T> LoadData<T, U>(string storedProcedures, U parameters, string connectionStringName)

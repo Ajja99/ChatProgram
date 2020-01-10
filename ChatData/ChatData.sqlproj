@@ -69,4 +69,7 @@
   <ItemGroup>
     <RefactorLog Include="ChatData.refactorlog" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="PublishLocations\ChatData.publish.xml" />
+  </ItemGroup>
 </Project>
