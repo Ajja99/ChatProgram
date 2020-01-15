@@ -4,7 +4,8 @@
 AS
 BEGIN
 	SET NOCOUNT ON
-	SELECT [Id], [Username], [FirstName], [LastName], [EmailAddress], [CreatedDate]
+
+	SELECT [Id],[Username], [FirstName], [LastName], [EmailAddress], [CreatedDate]
 	FROM [dbo].[chat_user]
 	WHERE [Id] = @Id;
 END

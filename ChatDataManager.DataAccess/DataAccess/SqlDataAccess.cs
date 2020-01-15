@@ -18,13 +18,14 @@ namespace ChatDataManager.Library.DataAccess
             return connectionString;
         }
 
-        public List<T> LoadData<T, U>(string storedProcedures, U parameters, string connectionStringName)
+        public List<T> LoadData<T, U>(string storedProcedure, U parameters, string connectionStringName)
         {
             string connectionString = GetConnectionString(connectionStringName);
 
             using (IDbConnection connection = new SqlConnection(connectionString))
             {
-                List<T> rows = connection.Query<T>(storedProcedures, parameters, commandType: CommandType.StoredProcedure).ToList();
+                List<T> rows = connection.Query<T>(storedProcedure, parameters,
+                    commandType: CommandType.StoredProcedure).ToList();
 
                 return rows;
             }

@@ -10,6 +10,7 @@ using System.Web.Http;
 
 namespace ChatDataManager.Controllers
 {
+    [Authorize]
     public class UserController : ApiController
     {
         public UserModel GetUserById()
