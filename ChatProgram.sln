@@ -11,6 +11,8 @@ Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "ChatData", "ChatData\ChatDa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChatDataManager.DataAccess", "ChatDataManager.DataAccess\ChatDataManager.DataAccess.csproj", "{DA16FE90-1D3B-4C67-B172-32078DAD4006}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChatDesktopUI", "ChatDesktopUI\ChatDesktopUI.csproj", "{92E47E3D-F6D4-4922-8B35-2F445BA5057A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,6 +37,10 @@ Global
 		{DA16FE90-1D3B-4C67-B172-32078DAD4006}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DA16FE90-1D3B-4C67-B172-32078DAD4006}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DA16FE90-1D3B-4C67-B172-32078DAD4006}.Release|Any CPU.Build.0 = Release|Any CPU
+		{92E47E3D-F6D4-4922-8B35-2F445BA5057A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{92E47E3D-F6D4-4922-8B35-2F445BA5057A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{92E47E3D-F6D4-4922-8B35-2F445BA5057A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{92E47E3D-F6D4-4922-8B35-2F445BA5057A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
