@@ -127,5 +127,11 @@
   <ItemGroup>
     <Folder Include="Models\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ChatDesktopUI.Library\ChatDesktopUI.Library.csproj">
+      <Project>{4839A46F-CF94-43BD-AF19-0C35CA9668A3}</Project>
+      <Name>ChatDesktopUI.Library</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

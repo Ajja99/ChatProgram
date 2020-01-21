@@ -1,4 +1,6 @@
 ﻿using Caliburn.Micro;
+using ChatDesktopUI.Library.Api;
+using ChatDesktopUI.Library.Models;
 using ChatDesktopUI.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -22,7 +24,9 @@ namespace ChatDesktopUI
         {
             _container
                 .Singleton<IWindowManager, WindowManager>()
-                .Singleton<IEventAggregator, EventAggregator>();
+                .Singleton<IEventAggregator, EventAggregator>()
+                .Singleton<IApiHelper, ApiHelper>()
+                .Singleton<ILoggedInUserModel, LoggedInUserModel>();
 
             GetType().Assembly.GetTypes()
                 .Where(type => type.IsClass)

@@ -34,9 +34,9 @@
         <TextBox x:Name="UserName" Grid.Row="2">
             username
         </TextBox>
-        <PasswordBox x:Name="Password" Grid.Row="3" >
+        <TextBox x:Name="Password" Grid.Row="3" >
             
-        </PasswordBox>
+        </TextBox>
 
         <Button x:Name="LogIn" Grid.Row="4">
             Log in

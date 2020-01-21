@@ -1,4 +1,5 @@
 ﻿using Caliburn.Micro;
+using ChatDesktopUI.Library.Api;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,12 @@ namespace ChatDesktopUI.ViewModels
 {
     public class LoginViewModel : Screen
     {
+        private IApiHelper _apiHelper;
+
+        public LoginViewModel(IApiHelper apiHelper)
+        {
+            _apiHelper = apiHelper;
+        }
 
         public bool IsErrorVisible
         {
@@ -23,7 +30,11 @@ namespace ChatDesktopUI.ViewModels
         public string ErrorMessage
         {
             get { return _errorMessage; }
-            set { _errorMessage = value; }
+            set 
+            {
+                _errorMessage = value;
+                NotifyOfPropertyChange(() => ErrorMessage);
+            }
         }
 
         private string _userName = "";
@@ -47,15 +58,30 @@ namespace ChatDesktopUI.ViewModels
             set
             {
                 _password = value;
-                NotifyOfPropertyChange(() => UserName);
+                NotifyOfPropertyChange(() => Password);
                 NotifyOfPropertyChange(() => CanLogIn);
             }
         }
 
         public async Task LogIn()
         {
-            UserName = "";
-            Password = "";
+            //UserName = "";
+            //Password = "";
+
+            try
+            {
+                //ErrorMessage = "";
+                var result = await _apiHelper.Authenticate(UserName, Password);
+
+                await _apiHelper.GetLoggedInUserInfo(result.Access_Token);
+
+                UserName = "LOGGED IN";
+            }
+            catch (Exception error)
+            {
+
+                ErrorMessage = error.Message;
+            }
         }
 
         public bool CanLogIn
@@ -63,7 +89,7 @@ namespace ChatDesktopUI.ViewModels
             get
             {
                 bool output = false;
-                if (_userName?.Length > 0)
+                if (_userName?.Length > 0 && _password?.Length > 0)
                 {
                     output = true;
                 }

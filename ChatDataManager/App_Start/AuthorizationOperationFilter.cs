@@ -22,8 +22,7 @@ namespace ChatDataManager.App_Start
                 @in = "header",
                 description = "access token",
                 required = false,
-                type = "string",
-                @default = "bearer "
+                type = "string"
             });
         }
     }
