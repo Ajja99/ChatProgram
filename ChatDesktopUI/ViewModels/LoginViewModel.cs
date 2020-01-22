@@ -1,4 +1,5 @@
 ﻿using Caliburn.Micro;
+using ChatDesktopUI.EventModels;
 using ChatDesktopUI.Library.Api;
 using System;
 using System.Collections.Generic;
@@ -11,10 +12,12 @@ namespace ChatDesktopUI.ViewModels
     public class LoginViewModel : Screen
     {
         private IApiHelper _apiHelper;
+        private readonly IEventAggregator _events;
 
-        public LoginViewModel(IApiHelper apiHelper)
+        public LoginViewModel(IApiHelper apiHelper, IEventAggregator events)
         {
             _apiHelper = apiHelper;
+            _events = events;
         }
 
         public bool IsErrorVisible
@@ -75,7 +78,7 @@ namespace ChatDesktopUI.ViewModels
 
                 await _apiHelper.GetLoggedInUserInfo(result.Access_Token);
 
-                UserName = "LOGGED IN";
+                ErrorMessage = "LOGGED IN!";
             }
             catch (Exception error)
             {
@@ -100,7 +103,7 @@ namespace ChatDesktopUI.ViewModels
 
         public void Register()
         {
-
+            _events.PublishOnUIThread(new RegisterEvent());
         }
 
         public bool CanRegister
@@ -110,7 +113,5 @@ namespace ChatDesktopUI.ViewModels
                 return true;
             }
         } 
-
     }
-    
 }

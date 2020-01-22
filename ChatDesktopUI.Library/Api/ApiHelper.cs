@@ -82,7 +82,7 @@ namespace ChatDesktopUI.Library.Api
                     _loggedInUser.FirstName = result.FirstName;
                     _loggedInUser.lastName = result.lastName;
                     _loggedInUser.EmailAddress = result.EmailAddress;
-                    //_loggedInUser.CreatedDate = result.CreatedDate;
+                    _loggedInUser.CreatedDate = result.CreatedDate;
                 }
                 else
                 {
