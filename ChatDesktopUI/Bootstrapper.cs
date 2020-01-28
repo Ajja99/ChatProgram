@@ -22,6 +22,9 @@ namespace ChatDesktopUI
 
         protected override void Configure()
         {
+            _container.Instance(_container)
+                .PerRequest<IRegisterUserEndpoint, RegisterUserEndpoint>();
+
             _container
                 .Singleton<IWindowManager, WindowManager>()
                 .Singleton<IEventAggregator, EventAggregator>()

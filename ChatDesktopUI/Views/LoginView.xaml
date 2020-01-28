@@ -29,7 +29,8 @@
             Login
         </TextBlock>
 
-        <TextBlock x:Name="ErrorMessage" Grid.Row="1">
+        <TextBlock x:Name="ErrorMessage" Visibility="{Binding IsErrorVisible, Converter={StaticResource BooleanToVisibilityConverter}, FallbackValue=Collapsed}"
+                   Grid.Row="1" Foreground="Red" FontSize="30">
             Error handling
         </TextBlock>
         
@@ -39,7 +40,6 @@
         <TextBox x:Name="Password" Grid.Row="3" >
             
         </TextBox>
-
 
         <Button x:Name="LogIn" Grid.Row="4">
             Log in

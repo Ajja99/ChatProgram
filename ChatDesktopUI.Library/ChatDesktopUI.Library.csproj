@@ -50,14 +50,23 @@
   <ItemGroup>
     <Compile Include="Api\ApiHelper.cs" />
     <Compile Include="Api\IApiHelper.cs" />
+    <Compile Include="Api\IRegisterUserEndpoint.cs" />
+    <Compile Include="Api\RegisterUserEndpoint.cs" />
     <Compile Include="Models\AuthenticatedUserModel.cs" />
     <Compile Include="Models\ILoggedInUserModel.cs" />
     <Compile Include="Models\LoggedInUserModel.cs" />
+    <Compile Include="Models\RegisterUserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ChatDataManager\ChatDataManager.csproj">
+      <Project>{0873D512-9217-469B-B658-100DD53162CC}</Project>
+      <Name>ChatDataManager</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

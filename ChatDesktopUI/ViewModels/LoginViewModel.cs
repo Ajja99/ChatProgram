@@ -11,7 +11,7 @@ namespace ChatDesktopUI.ViewModels
 {
     public class LoginViewModel : Screen
     {
-        private IApiHelper _apiHelper;
+        private readonly IApiHelper _apiHelper;
         private readonly IEventAggregator _events;
 
         public LoginViewModel(IApiHelper apiHelper, IEventAggregator events)
@@ -24,7 +24,15 @@ namespace ChatDesktopUI.ViewModels
         {
             get
             {
-                return false;
+                bool output = false;
+
+                if (ErrorMessage?.Length > 0)
+                {
+                    output = true;
+                }
+
+                return output;
+
             }
         }
 
@@ -37,6 +45,7 @@ namespace ChatDesktopUI.ViewModels
             {
                 _errorMessage = value;
                 NotifyOfPropertyChange(() => ErrorMessage);
+                NotifyOfPropertyChange(() => IsErrorVisible);
             }
         }
 

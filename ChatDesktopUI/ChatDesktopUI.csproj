@@ -69,6 +69,7 @@
     </ApplicationDefinition>
     <Compile Include="Bootstrapper.cs" />
     <Compile Include="EventModels\LogOnEvent.cs" />
+    <Compile Include="EventModels\RegisteredEvent.cs" />
     <Compile Include="EventModels\RegisterEvent.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\RegisterViewModel.cs" />

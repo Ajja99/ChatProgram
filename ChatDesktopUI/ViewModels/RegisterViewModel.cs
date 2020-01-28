@@ -1,4 +1,7 @@
 ﻿using Caliburn.Micro;
+using ChatDesktopUI.EventModels;
+using ChatDesktopUI.Library.Api;
+using ChatDesktopUI.Library.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +12,13 @@ namespace ChatDesktopUI.ViewModels
 {
     public class RegisterViewModel : Screen
     {
+        private readonly IEventAggregator _events;
+        private readonly IRegisterUserEndpoint _registeruserEndpoint;
+        public RegisterViewModel(IEventAggregator events, IRegisterUserEndpoint registerUserEndpoint)
+        {
+            _events = events;
+            _registeruserEndpoint = registerUserEndpoint;
+        }
         public bool IsErrorVisible
         {
             get
@@ -33,7 +43,7 @@ namespace ChatDesktopUI.ViewModels
         {
             get { return _userName; }
             set
-            {
+                {
                 _userName = value;
                 NotifyOfPropertyChange(() => UserName);
                 NotifyOfPropertyChange(() => CanRegister);
@@ -89,6 +99,7 @@ namespace ChatDesktopUI.ViewModels
         }
 
         private string _emailAddress;
+
         public string EmailAddress
         {
             get { return _emailAddress; }
@@ -102,6 +113,25 @@ namespace ChatDesktopUI.ViewModels
 
         public void Register()
         {
+            try
+            {
+                RegisterUserModel user = new RegisterUserModel
+                {
+                    Username = _userName,
+                    Email = _emailAddress,
+                    Password = _password,
+                    ConfirmPassword = _confirmPassword
+                };
+
+                _registeruserEndpoint.PostRegisterUser(user);
+
+                _events.PublishOnUIThread(new RegisteredEvent());
+            }
+            catch (Exception)
+            {
+
+                throw new Exception();
+            }
 
         }
 
@@ -109,15 +139,18 @@ namespace ChatDesktopUI.ViewModels
         {
             get
             {
+            /*
                 bool output = false;
 
                 if (UserName?.Length >= 1 &&  FirstName?.Length >= 1 && LastName?.Length >= 1 && EmailAddress?.Length >= 1 && LastName?.Length >= 1 && Password == ConfirmPassword)
                 {
                     output = true;
-                }
+                }*/
 
-                return output;
+                return true;
+
             }
+            
         }
     }
 }

@@ -8,19 +8,21 @@ using System.Threading.Tasks;
 
 namespace ChatDesktopUI.ViewModels
 {
-    public class ShellViewModel : Conductor<object> , IHandle<LogOnEvent>, IHandle<RegisterEvent>
+    public class ShellViewModel : Conductor<object> , IHandle<LogOnEvent>, IHandle<RegisterEvent>, IHandle<RegisteredEvent>
     {
 
         private IEventAggregator _events;
         private readonly RegisterViewModel _registerVm;
+        private readonly LoginViewModel _loginVm;
 
-        public ShellViewModel(IEventAggregator events, RegisterViewModel registerVm)
+        public ShellViewModel(IEventAggregator events, RegisterViewModel registerVm, LoginViewModel loginVm)
         {
             _events = events;
             _registerVm = registerVm;
+            _loginVm = loginVm;
 
             _events.Subscribe(this);
-            ActivateItem(IoC.Get<LoginViewModel>());
+            ActivateItem(_loginVm);
         }
 
         public void Handle(LogOnEvent message)
@@ -31,6 +33,11 @@ namespace ChatDesktopUI.ViewModels
         public void Handle(RegisterEvent message)
         {
             ActivateItem(_registerVm);
+        }
+
+        public void Handle(RegisteredEvent message)
+        {
+            ActivateItem(_loginVm);
         }
     }
 }
