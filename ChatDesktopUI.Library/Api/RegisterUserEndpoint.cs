@@ -26,13 +26,16 @@ namespace ChatDesktopUI.Library.Api
                 Username = user.Username,
                 Email = user.Email,
                 Password = user.Password,
-                ConfirmPassword = user.ConfirmPassword
+                ConfirmPassword = user.ConfirmPassword,
+                FirstName = user.FirstName,
+                LastName = user.LastName
             };
+
             using (HttpResponseMessage response = await _apihelper.ApiClient.PostAsJsonAsync("/api/Account/Register", model))
             {
                 if (response.IsSuccessStatusCode)
                 {
-                    Console.WriteLine("OASDASD");
+                    //Todo - Log registered user?
                 }
                 else
                 {

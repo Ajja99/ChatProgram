@@ -1,4 +1,5 @@
 ﻿using Caliburn.Micro;
+using ChatDataManager.Models;
 using ChatDesktopUI.EventModels;
 using ChatDesktopUI.Library.Api;
 using ChatDesktopUI.Library.Models;
@@ -115,15 +116,35 @@ namespace ChatDesktopUI.ViewModels
         {
             try
             {
-                RegisterUserModel user = new RegisterUserModel
+                RegisterUserModel registerUser = new RegisterUserModel
                 {
                     Username = _userName,
                     Email = _emailAddress,
                     Password = _password,
-                    ConfirmPassword = _confirmPassword
+                    ConfirmPassword = _confirmPassword,
+                    FirstName = _firstName,
+                    LastName = _lastName
                 };
 
-                _registeruserEndpoint.PostRegisterUser(user);
+                try
+                {
+                    _registeruserEndpoint.PostRegisterUser(registerUser);
+
+                    //user.Id = 
+
+                }
+                catch (Exception)
+                {
+                    throw new Exception();
+                }
+
+                //Todo - Add Properties to usermodel
+
+
+
+                //Add usermodel to database
+
+
 
                 _events.PublishOnUIThread(new RegisteredEvent());
             }

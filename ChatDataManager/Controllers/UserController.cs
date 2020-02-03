@@ -1,4 +1,5 @@
-﻿using ChatDataManager.Library.DataAccess;
+﻿using ChatDataManager.DataAccess.Models;
+using ChatDataManager.Library.DataAccess;
 using ChatDataManager.Models;
 using Microsoft.AspNet.Identity;
 using System;
